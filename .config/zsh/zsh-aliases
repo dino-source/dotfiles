@@ -28,6 +28,10 @@ alias mv='mv -i'
 alias rm='rm -i'
 
 # more my custom aliases
+alias xc='sh xconfig.sh'
+alias xb='sh xbuild.sh'
+alias xt='sh xtests.sh'
+alias xa='sh xapp.sh'
 alias ll='ls -lah'
 alias ls='ls --color=auto'
 alias so='source ~/.zshrc'
