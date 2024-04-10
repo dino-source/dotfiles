@@ -1,0 +1,18 @@
+# themes from https://github.com/alacritty/alacritty-theme
+
+# import = ["/Users/mischa/.config/alacritty/themes/themes/gruvbox_dark.toml"]
+import = ["~/.config/alacritty/themes/themes/gruvbox_dark.toml"]
+
+[font]
+size = 18
+
+[font.normal]
+family = "JetBrains Mono Nerd font"
+
+[window]
+decorations = "none"
+startup_mode = "Fullscreen"
+
+[window.padding]
+x = 0
+y = 0
