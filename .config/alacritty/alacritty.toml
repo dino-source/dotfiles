@@ -4,14 +4,13 @@
 import = ["~/.config/alacritty/themes/themes/gruvbox_dark.toml"]
 
 [font]
-size = 18
+size = 11
 
 [font.normal]
 family = "JetBrains Mono Nerd font"
 
 [window]
 decorations = "none"
-startup_mode = "Fullscreen"
 
 [window.padding]
 x = 0
