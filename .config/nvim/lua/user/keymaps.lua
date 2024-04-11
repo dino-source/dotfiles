@@ -1,6 +1,7 @@
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
+keymap("i", "jk", "<Esc>")
 keymap("n", "<Space>", "", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
