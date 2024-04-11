@@ -7,6 +7,9 @@ SAVEHIST=1000000
 export WLR_NO_HARDWARE_CURSORS=1
 export WLR_RENDERER_ALLOW_SOFTWARE=1
 
+# Some stuff to make Dolphin display icons
+export QT_QPA_PLATFORMTHEME=qt5ct
+
 export PATH="$HOME/.local/bin":$PATH
 export MANPAGER='nvim +Man!'
 export MANWIDTH=999
