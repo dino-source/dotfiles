@@ -1,0 +1,14 @@
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	re = restore
+    ls = "log --oneline"
+[user]
+	name = Dino Source
+	email = dinosource.cpp@gmail.com
+[core]
+	editor = nvim
+[init]
+	defaultBranch = master
