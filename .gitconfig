@@ -12,3 +12,5 @@
 	editor = nvim
 [init]
 	defaultBranch = master
+[clone]
+	defaultRemoteName = origin
