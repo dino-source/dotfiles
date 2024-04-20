@@ -4,7 +4,7 @@
 	ci = commit
 	st = status
 	re = restore
-    ls = "log --oneline"
+	ls = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [user]
 	name = Dino Source
 	email = dinosource.cpp@gmail.com
