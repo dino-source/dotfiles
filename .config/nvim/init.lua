@@ -25,4 +25,9 @@ local commands = require "lvim.core.commands"
 commands.load(commands.defaults)
 
 local options = { noremap = true }
+vim.keymap.set("v", "jk", "<Esc>", options)
+vim.keymap.set("x", "jk", "<Esc>", options)
+vim.keymap.set("o", "jk", "<Esc>", options)
+vim.keymap.set("t", "jk", "<Esc>", options)
 vim.keymap.set("i", "jk", "<Esc>", options)
+vim.keymap.set("c", "jk", "<Esc>", options)
