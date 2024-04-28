@@ -14,3 +14,5 @@
 	defaultBranch = master
 [clone]
 	defaultRemoteName = origin
+[pull]
+	ff = only
