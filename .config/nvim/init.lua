@@ -1,33 +1,19 @@
-local base_dir = vim.env.LUNARVIM_BASE_DIR
-    or (function()
-        local init_path = debug.getinfo(1, "S").source
-        return init_path:sub(2):match("(.*[/\\])"):sub(1, -2)
-    end)()
+-- This file simply bootstraps the installation of Lazy.nvim and then calls other files for execution
+-- This file doesn't necessarily need to be touched, BE CAUTIOUS editing this file and proceed at your own risk.
+local lazypath = vim.env.LAZY or vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+if not (vim.env.LAZY or (vim.uv or vim.loop).fs_stat(lazypath)) then
+  -- stylua: ignore
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+end
+vim.opt.rtp:prepend(lazypath)
 
-if not vim.tbl_contains(vim.opt.rtp:get(), base_dir) then
-    vim.opt.rtp:append(base_dir)
+-- validate that lazy is available
+if not pcall(require, "lazy") then
+  -- stylua: ignore
+  vim.api.nvim_echo({ { ("Unable to load lazy from: %s\n"):format(lazypath), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } }, true, {})
+  vim.fn.getchar()
+  vim.cmd.quit()
 end
 
-require("lvim.bootstrap"):init(base_dir)
-
-require("lvim.config"):load()
-
-local plugins = require "lvim.plugins"
-
-require("lvim.plugin-loader").load { plugins, lvim.plugins }
-
-require("lvim.core.theme").setup()
-
-local Log = require "lvim.core.log"
-Log:debug "Starting LunarVim"
-
-local commands = require "lvim.core.commands"
-commands.load(commands.defaults)
-
-local options = { noremap = true }
-vim.keymap.set("v", "jk", "<Esc>", options)
-vim.keymap.set("x", "jk", "<Esc>", options)
-vim.keymap.set("o", "jk", "<Esc>", options)
-vim.keymap.set("t", "jk", "<Esc>", options)
-vim.keymap.set("i", "jk", "<Esc>", options)
-vim.keymap.set("c", "jk", "<Esc>", options)
+require "lazy_setup"
+require "polish"
