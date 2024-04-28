@@ -1,15 +1,12 @@
 [submodule ".config/tmux/plugins/tpm"]
 	path = .config/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
-[submodule ".config/tmux/.config/tmux/plugins/tmux-continuum"]
-	path = .config/tmux/.config/tmux/plugins/tmux-continuum
+[submodule ".config/tmux/plugins/tmux-continuum"]
+	path = .config/tmux/plugins/tmux-continuum
 	url = https://github.com/tmux-plugins/tmux-continuum
-[submodule ".config/tmux/.config/tmux/plugins/tmux-ressurect"]
-	path = .config/tmux/.config/tmux/plugins/tmux-ressurect
+[submodule ".config/tmux/plugins/tmux-ressurect"]
+	path = .config/tmux/plugins/tmux-ressurect
 	url = https://github.com/tmux-plugins/tmux-resurrect
-[submodule ".config/tmux/.config/tmux/plugins/tmux-sensible"]
-	path = .config/tmux/.config/tmux/plugins/tmux-sensible
+[submodule ".config/tmux/plugins/tmux-sensible"]
+	path = .config/tmux/plugins/tmux-sensible
 	url = https://github.com/tmux-plugins/tmux-sensible
-[submodule ".config/tmux/.config/tmux/plugins/tpm"]
-	path = .config/tmux/.config/tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
