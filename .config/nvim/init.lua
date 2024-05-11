@@ -29,10 +29,17 @@ local plugins = {
             -- setup must be called before loading
             vim.cmd.colorscheme "catppuccin"
         end,
+    },
+    {
+        "nvim-telescope/telescope.nvim", tag = "0.1.6",
+        dependencies = { "nvim-lua/plenary.nvim" }
     }
 }
 local opts = {}
 
 -- Start using lazy.nvim package manager:
 require("lazy").setup(plugins, opts)
+
+local builtin = require("telescope.builtin")
+vim.keymap.set('n', '<C-p>', builtin.find_files, {})
 
