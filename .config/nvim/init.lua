@@ -59,3 +59,7 @@ local builtin = require("telescope.builtin")
 -- Set up keymappings for some telescope features:
 vim.keymap.set('n', '<C-p>', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+
+-- Set more handy keymappings:
+local options = { noremap = true }
+vim.keymap.set('i', 'jk', '<Esc>', options) -- Use 'kj' as <Escape> key)
