@@ -58,7 +58,8 @@ padding = { x = 0, y = 0 }  # Default: x = 0, y = 0
 dynamic_padding = false  # Default: false
 
 # Window decorations
-decorations = "Buttonless"  # Default: "Full"
+#decorations = "Buttonless"  # Default: "Full"
+decorations = "None"
 
 # Opacity
 opacity = 0.9  # Default: 1.0
@@ -67,7 +68,8 @@ opacity = 0.9  # Default: 1.0
 blur = false  # Default: false
 
 # Startup mode
-startup_mode = "Fullscreen"  # Default: "Windowed"
+#startup_mode = "Fullscreen"  # Default: "Windowed"
+startup_mode = "Windowed"
 
 # Window title
 title = "Alacritty"  # Default: "Alacritty"
