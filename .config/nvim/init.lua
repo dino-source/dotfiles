@@ -34,6 +34,9 @@ local plugins = {
     {
         "nvim-telescope/telescope.nvim", tag = "0.1.6",
         dependencies = { "nvim-lua/plenary.nvim" }
+    },
+    {
+        "nvim-treesitter/nvim-treesitter", build = ":TSUpdate"
     }
 }
 local opts = {}
@@ -41,7 +44,18 @@ local opts = {}
 -- Start using lazy.nvim package manager:
 require("lazy").setup(plugins, opts)
 
+-- Define local variable 'config' for Treesitter plugin:
+local config = require("nvim-treesitter.configs")
+config.setup({
+    ensure_installed = {
+        "lua", "python", "cpp", "bash", "make", "cmake", "json", "haskell",
+        "java", "c_sharp", "clojure", "javascript", "html", "css"},
+    highlight = {enable = true},
+    indent = {enable = true},
+})
+
+-- Start using telescope plugin:
 local builtin = require("telescope.builtin")
+-- Set up keymappings for some telescope features:
 vim.keymap.set('n', '<C-p>', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-
