@@ -4,8 +4,8 @@ vim.cmd("set tabstop=4")        -- how many columns of whitespace is a \t char w
 vim.cmd("set softtabstop=4")    -- how many columns of whitespace is a tab keypress or a backspace keypress worth
 vim.cmd("set shiftwidth=4")     -- how many columns of whitespace a “level of indentation” is worth
 
--- Load and install lazy.nvim package manager from GitHub:
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+-- Download lazy.nvim package manager from GitHub and install it:
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim" -- will be in ~/.local/share/nvim/lazy/lazy.nvim
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
     "git",
@@ -18,9 +18,21 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Necessary local variables:
 local plugins = {
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        config = function()
+            require("catppuccin").setup()
+            -- setup must be called before loading
+            vim.cmd.colorscheme "catppuccin"
+        end,
+    }
 }
 local opts = {}
 
+-- Start using lazy.nvim package manager:
 require("lazy").setup(plugins, opts)
+
