@@ -3,6 +3,7 @@ vim.cmd("set expandtab")        -- tabs keypresses will be expanded into spaces
 vim.cmd("set tabstop=4")        -- how many columns of whitespace is a \t char worth
 vim.cmd("set softtabstop=4")    -- how many columns of whitespace is a tab keypress or a backspace keypress worth
 vim.cmd("set shiftwidth=4")     -- how many columns of whitespace a “level of indentation” is worth
+vim.g.mapleader = ' '
 
 -- Download lazy.nvim package manager from GitHub and install it:
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim" -- will be in ~/.local/share/nvim/lazy/lazy.nvim
@@ -42,4 +43,5 @@ require("lazy").setup(plugins, opts)
 
 local builtin = require("telescope.builtin")
 vim.keymap.set('n', '<C-p>', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 
