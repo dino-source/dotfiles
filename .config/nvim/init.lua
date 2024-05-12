@@ -79,6 +79,6 @@ vim.keymap.set('n', '<leader>e', ':Neotree<CR>', {})
 
 -- Set more handy keymappings:
 local options = { noremap = true }
-vim.keymap.set('i', 'jk', '<Esc>', options)      -- Use 'jk' as <Escape> key)
-vim.keymap.set('n', '<leader>q', ':q<CR>', {})   -- quit current buffer
-vim.keymap.set('n', '<leader>w', ':wqa<CR>', {}) -- write changes, quit all buffers
+vim.keymap.set('i', 'jk', '<Esc>', options)           -- Use 'jk' as <Escape> key)
+vim.keymap.set('n', '<leader>q', ':q<CR>', options)   -- quit current buffer
+vim.keymap.set('n', '<leader>w', ':wqa<CR>', options) -- write changes, quit all buffers
