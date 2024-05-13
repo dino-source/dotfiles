@@ -20,42 +20,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Neovim plugins to be installed via lazy.nvim:
-local plugins = {
-    {
-        "catppuccin/nvim",
-        name = "catppuccin",
-        priority = 1000,
-        config = function()
-            require("catppuccin").setup()
-            -- setup must be called before loading
-            vim.cmd.colorscheme "catppuccin"
-        end,
-    },
-    {
-        "nvim-telescope/telescope.nvim", tag = "0.1.6",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-    },
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-    },
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons",
-            "MunifTanjim/nui.nvim",
-        },
-    },
-} -- endof plugins
-
-local opts = {}
 
 -- Start using lazy.nvim package manager:
-require("lazy").setup(plugins, opts)
+require("lazy").setup("plugins")
 
 -- Define local variable 'config' for Treesitter plugin:
 local config = require("nvim-treesitter.configs")
