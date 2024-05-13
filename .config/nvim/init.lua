@@ -21,13 +21,14 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Neovim plugins to be installed via lazy.nvim:
 
--- Start using lazy.nvim package manager:
+-- Start using lazy.nvim package manager + load
+-- neovim plugins from lua/plugins.lua:
 require("lazy").setup("plugins")
 
 -- Define local variable 'config' for Treesitter plugin:
 local config = require("nvim-treesitter.configs")
 config.setup({
-    ensure_installed = {
+    ensure_installed = { -- Treesitter support for the following languages:
         "lua", "python", "cpp", "bash", "make", "cmake", "json", "haskell",
         "java", "c_sharp", "clojure", "javascript", "html", "css"},
     highlight = {enable = true},
@@ -46,6 +47,9 @@ vim.keymap.set('n', '<leader>e', ':Neotree<CR>', {})
 
 -- Set more handy keymappings:
 local options = { noremap = true }
-vim.keymap.set('i', 'jk', '<Esc>', options)           -- Use 'jk' as <Escape> key)
-vim.keymap.set('n', '<leader>q', ':q<CR>', options)   -- quit current buffer
-vim.keymap.set('n', '<leader>w', ':wqa<CR>', options) -- write changes, quit all buffers
+INSERT_MODE = 'i'
+NORMAL_MODE = 'n'
+vim.keymap.set(INSERT_MODE, 'jk', '<Esc>', options)                 -- Use 'jk' as <Escape> key
+vim.keymap.set(NORMAL_MODE, '<leader>t', ':ter<CR><S-a>', options)  -- open terminal
+vim.keymap.set(NORMAL_MODE, '<leader>w', ':q<CR>', options)         -- quit current buffer
+vim.keymap.set(NORMAL_MODE, '<leader>q', ':wqa<CR>', options)       -- write changes, quit all buffers
