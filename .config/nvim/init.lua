@@ -19,31 +19,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Neovim plugins to be installed via lazy.nvim:
-
 -- Start using lazy.nvim package manager + load
 -- neovim plugins from lua/plugins.lua:
 require("lazy").setup("plugins")
-
--- Define local variable 'config' for Treesitter plugin:
-local config = require("nvim-treesitter.configs")
-config.setup({
-    ensure_installed = { -- Treesitter support for the following languages:
-        "lua", "python", "cpp", "bash", "make", "cmake", "json", "haskell",
-        "java", "c_sharp", "clojure", "javascript", "html", "css"},
-    highlight = {enable = true},
-    indent = {enable = true},
-})
-
--- Start using telescope plugin:
-local builtin = require("telescope.builtin")
-
--- Set up keymappings for some telescope features:
-vim.keymap.set('n', '<C-p>', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-
--- Set up keymappings for some neo-tree features:
-vim.keymap.set('n', '<leader>e', ':Neotree<CR>', {})
 
 -- Set more handy keymappings:
 local options = { noremap = true }
