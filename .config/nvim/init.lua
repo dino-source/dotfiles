@@ -18,6 +18,5 @@ vim.opt.rtp:prepend(lazypath)
 -- Load keymappings from lua/keymappings.lua:
 require("keymappings")
 
--- Start using lazy.nvim package manager + load
--- neovim plugins from lua/plugins.lua:
+-- Start using lazy.nvim package manager + load neovim plugins from lua/plugins.lua:
 require("lazy").setup("plugins")
