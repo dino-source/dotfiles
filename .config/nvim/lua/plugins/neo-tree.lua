@@ -8,6 +8,6 @@ return {
     },
     config = function()
         -- Set up keymappings for some neo-tree features:
-        vim.keymap.set('n', '<leader>e', ':Neotree<CR>', {})
+        vim.keymap.set('n', '<leader>e', ':Neotree filesystem reveal left<CR>', {})
     end
 }
