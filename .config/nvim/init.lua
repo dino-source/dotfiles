@@ -1,9 +1,5 @@
--- Use spaces instead of tabs and setup tab length:
-vim.cmd("set expandtab")        -- tabs keypresses will be expanded into spaces
-vim.cmd("set tabstop=4")        -- how many columns of whitespace is a \t char worth
-vim.cmd("set softtabstop=4")    -- how many columns of whitespace is a tab keypress or a backspace keypress worth
-vim.cmd("set shiftwidth=4")     -- how many columns of whitespace a “level of indentation” is worth
-vim.g.mapleader = ' '
+-- Load vim-options from lua/vim-options.lua:
+require("vim-options")
 
 -- Download lazy.nvim package manager from GitHub and install it:
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim" -- will be in ~/.local/share/nvim/lazy/lazy.nvim
@@ -19,15 +15,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Load keymappings from lua/keymappings.lua:
+require("keymappings")
+
 -- Start using lazy.nvim package manager + load
 -- neovim plugins from lua/plugins.lua:
 require("lazy").setup("plugins")
-
--- Set more handy keymappings:
-local options = { noremap = true }
-INSERT_MODE = 'i'
-NORMAL_MODE = 'n'
-vim.keymap.set(INSERT_MODE, 'jk', '<Esc>', options)                 -- Use 'jk' as <Escape> key
-vim.keymap.set(NORMAL_MODE, '<leader>t', ':ter<CR><S-a>', options)  -- open terminal
-vim.keymap.set(NORMAL_MODE, '<leader>w', ':q<CR>', options)         -- quit current buffer
-vim.keymap.set(NORMAL_MODE, '<leader>q', ':wqa<CR>', options)       -- write changes, quit all buffers
