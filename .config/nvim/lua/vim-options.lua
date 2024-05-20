@@ -44,6 +44,3 @@ for k, v in pairs(options) do
 end
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
-
--- Set space key to behave as a Leader key:
-vim.g.mapleader = " "

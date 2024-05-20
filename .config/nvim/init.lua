@@ -1,3 +1,6 @@
+-- Set space key to behave as a Leader key:
+vim.g.mapleader = " "
+
 -- Load vim-options from lua/vim-options.lua:
 require("vim-options")
 
