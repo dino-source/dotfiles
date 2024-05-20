@@ -31,8 +31,8 @@ vim.keymap.set(mode.normal, alt_n, go_to_next_buffer, options)
 local go_to_prev_buffer = ':bp<CR>'
 vim.keymap.set(mode.normal, alt_p, go_to_prev_buffer, options)
 
-local move_up_current_line = 'ddkP'
-vim.keymap.set(mode.normal, alt_k, move_up_current_line,options)
+local move_current_line_up = 'ddkP'
+vim.keymap.set(mode.normal, alt_k, move_current_line_up,options)
 
-local move_down_current_line = 'ddp'
-vim.keymap.set(mode.normal, alt_j, move_down_current_line,options)
+local move_current_line_down = 'ddp'
+vim.keymap.set(mode.normal, alt_j, move_current_line_down,options)
