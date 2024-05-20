@@ -10,7 +10,9 @@ vim.keymap.set(NORMAL_MODE, '<leader>n', ':bn<CR>', options)         -- go to ne
 vim.keymap.set(NORMAL_MODE, '<leader>p', ':bp<CR>', options)         -- go to prev buffer
 
 -- Alternative keybindigs (in case leader key just stops working):
+vim.keymap.set(NORMAL_MODE, '<A-t>', ':ter<CR><S-a>', options)   -- open terminal
 vim.keymap.set(NORMAL_MODE, '<A-w>', ':q!<CR>', options)             -- quit current buffer
+vim.keymap.set(NORMAL_MODE, '<A-q>', ':wqa<CR>', options)            -- write changes, quit all buffers
 vim.keymap.set(NORMAL_MODE, '<A-e>', ':Neotree filesystem reveal left<CR>', options) -- open neo-tree
 vim.keymap.set(NORMAL_MODE, '<A-n>', ':bn<CR>', options)             -- go to next buffer
 vim.keymap.set(NORMAL_MODE, '<A-p>', ':bp<CR>', options)             -- go to prev buffer
