@@ -68,8 +68,7 @@ opacity = 0.9  # Default: 1.0
 blur = false  # Default: false
 
 # Startup mode
-#startup_mode = "Fullscreen"  # Default: "Windowed"
-startup_mode = "Windowed"
+startup_mode = "Fullscreen"  # Default: "Windowed"
 
 # Window title
 title = "Alacritty"  # Default: "Alacritty"
