@@ -10,6 +10,7 @@ return {
                 null_ls.builtins.formatting.cmake_format,
                 null_ls.builtins.formatting.clang_format,
                 null_ls.builtins.formatting.black, -- The uncompromising Python code formatter
+                null_ls.builtins.formatting.isort,
             },
         })
 
