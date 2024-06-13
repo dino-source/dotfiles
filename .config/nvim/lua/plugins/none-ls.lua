@@ -14,5 +14,7 @@ return {
                 null_ls.builtins.formatting.black, -- The uncompromising Python code formatter
             },
         })
+
+        vim.keymap.set('n', '<leader>gf', vim.lsp.buf.format, {})
     end
 }
