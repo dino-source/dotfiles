@@ -35,7 +35,7 @@ return {
             end, {})
             vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, {})
             vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, {})
-            vim.keymap.set({'n', 'v'}, '<space>ca', vim.lsp.buf.code_action, {})
+            vim.keymap.set({'n', 'v'}, '<C-a>', vim.lsp.buf.code_action, {})
             vim.keymap.set('n', '<space>f', function()
                 vim.lsp.buf.format { async = true }
             end, {})
