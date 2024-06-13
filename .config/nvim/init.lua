@@ -1,3 +1,6 @@
+-- Setup space key to be a leader key 
+require("leader-key")
+
 -- Load vim-options from lua/vim-options.lua:
 require("vim-options")
 
