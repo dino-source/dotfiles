@@ -13,6 +13,9 @@ return {
 					"clangd",
 					"lua_ls",
 					"pyright",
+                    "cmake",
+                    "bashls",
+                    "clojure_lsp",
 				},
 			})
 		end,
@@ -34,6 +37,16 @@ return {
 			lspconfig.pyright.setup({
                 capabilities = capabilities
             })
+			lspconfig.cmake.setup({
+                capabilities = capabilities
+            })
+			lspconfig.bashls.setup({
+                capabilities = capabilities
+            })
+			lspconfig.clojure_lsp.setup({
+                capabilities = capabilities
+            })
+
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
