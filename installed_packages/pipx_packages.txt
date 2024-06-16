@@ -1,0 +1,15 @@
+venvs are in /home/dino/.local/share/pipx/venvs
+apps are exposed on your $PATH at /home/dino/.local/bin
+manual pages are exposed at /home/dino/.local/share/man
+   package cmakelang 0.6.13, installed using Python 3.12.3
+    - cmake-annotate
+    - cmake-format
+    - cmake-genparsers
+    - cmake-lint
+    - ctest-to
+   package cmakelint 1.4.3, installed using Python 3.12.3
+    - cmakelint
+   package conan 2.4.1, installed using Python 3.12.3
+    - conan
+   package cpplint 1.6.1, installed using Python 3.12.3
+    - cpplint
