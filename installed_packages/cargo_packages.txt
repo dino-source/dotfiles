@@ -1,0 +1,4 @@
+fnm v1.35.1:
+    fnm
+tree-sitter-cli v0.22.5:
+    tree-sitter
