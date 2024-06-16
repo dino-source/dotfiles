@@ -1,0 +1,6 @@
+Mesa	org.freedesktop.Platform.GL.default	24.1.1	23.08	system
+Mesa (Extra)	org.freedesktop.Platform.GL.default	24.1.1	23.08-extra	system
+Intel	org.freedesktop.Platform.VAAPI.Intel		23.08	system
+openh264	org.freedesktop.Platform.openh264	2.4.1	2.4.1	system
+Fractal	org.gnome.Fractal	7	stable	system
+GNOME Application Platform version 46	org.gnome.Platform		46	system
