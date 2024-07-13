@@ -35,7 +35,7 @@ alias ll='ls -lah'
 alias ls='ls --color=auto'
 alias so='source ~/.zshrc'
 alias cppnew='sh /usr/bin/create_new_cpp_project.sh'
-alias up="echo '=> Upgrade all pacman packets:\nsudo pacman -Syu'; sudo pacman -Syu; echo '=> Upgrade all pipx packets:\npipx upgrade-all'; pipx upgrade-all"
+alias up="echo '=> Upgrade all pacman packages:\nsudo pacman -Syu'; sudo pacman -Syu; echo '=> Upgrade all pipx packages:\npipx upgrade-all'; pipx upgrade-all"
 alias py='/usr/bin/python'
 alias venv='python -m venv .env && source .env/bin/activate'
 
