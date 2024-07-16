@@ -29,7 +29,18 @@ return {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			lspconfig.clangd.setup({
-                capabilities = capabilities
+                capabilities = capabilities,
+                settings = {
+                    clangd = {
+                        InlayHints = {
+                            Designators = true,
+                            Enabled = true,
+                            ParameterNames = true,
+                            DeducedTypes = true,
+                        },
+                        fallbackFlags = { "-std=c++23" },
+                    },
+                },
             })
 			lspconfig.lua_ls.setup({
                 capabilities = capabilities
