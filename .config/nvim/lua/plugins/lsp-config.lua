@@ -11,6 +11,7 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"clangd",
+                    "rust_analyzer",
 					"lua_ls",
 					"pyright",
                     "cmake",
@@ -22,6 +23,9 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+        },
 		config = function()
 			local lspconfig = require("lspconfig")
 
@@ -42,8 +46,18 @@ return {
                     },
                 },
             })
+            lspconfig.rust_analyzer.setup({
+                capabilities = capabilities,
+            })
 			lspconfig.lua_ls.setup({
-                capabilities = capabilities
+                capabilities = capabilities,
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = { "vim" },
+                        },
+                    },
+                },
             })
 			lspconfig.pyright.setup({
                 capabilities = capabilities
