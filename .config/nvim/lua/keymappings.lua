@@ -25,6 +25,7 @@ vim.keymap.set(mode.normal, alt_q, save_and_quit, options)
 
 local open_neotree = ":Neotree filesystem reveal left<CR>"
 vim.keymap.set(mode.normal, alt_e, open_neotree, options)
+vim.keymap.set(mode.normal, "<leader>e", open_neotree, options)
 
 local go_to_next_buffer = ":bn<CR>"
 vim.keymap.set(mode.normal, alt_n, go_to_next_buffer, options)
