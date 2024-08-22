@@ -6,14 +6,17 @@ cd ${DEVELOP} && mkdir -p ${1} && cd ${project_directory} && \
 touch .gitignore .gitmodules CMakeLists.txt README.md
 
 cat > .gitignore << EOF
-# Ignore build artefacts
-build
+# Ignore build artefacts in 'build' directory
+build/
 
-# Ignore temporary files created by Google Test Framework
-Testing
+# Ignore 'lib' directory
+lib/
 
-# Ignore .vscode config files
-.vscode
+# Ignore temporary files created by Google Test Framework in 'Testing' directory
+Testing/
+
+# Ignore VS Code config files in '.vscode' directory
+.vscode/
 
 # Ignore binaries
 *.out
@@ -21,11 +24,26 @@ Testing
 main
 app
 
-# Ignore third-parties
-external
+# Ignore third-parties in 'external' directory in the root of the project
+/external/*
 
-# Ignore CMake cache
-.cache
+# except of CMakeLists.txt file
+!/external/CMakeLists.txt
+
+#Ignore googletest
+googletest
+/external/googletest/
+
+# Ignore unnecessary CMake, Make, clangd and conan stuff
+.cache/
+CMakeFiles/
+CMakeCache.txt
+DartConfiguration.tcl
+
+*.cmake
+!/cmake/UpdateSubmodules.cmake
+Makefile
+compile_commands.json
 EOF
 
 cat > .gitmodules << EOF
@@ -35,16 +53,16 @@ cat > .gitmodules << EOF
 EOF
 
 cat > CMakeLists.txt << EOF
-cmake_minimum_required(VERSION 3.29.0)
-project(single_number VERSION 0.0.1
+cmake_minimum_required(VERSION 3.30.0)
+project("$1" VERSION 0.0.1
     DESCRIPTION "$1"
     LANGUAGES CXX)
 
 # Disable response files
 set(CMAKE_CXX_USE_RESPONSE_FILE_FOR_INCLUDES OFF)
 
-# Enable C++20 compiler support
-set(CMAKE_CXX_STANDARD 20)
+# Enable C++23 compiler support
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -90,15 +108,15 @@ EOF
 
 cd ${project_directory}/external && touch CMakeLists.txt
 cat > CMakeLists.txt << EOF
-cmake_minimum_required(VERSION 3.29.0)
+cmake_minimum_required(VERSION 3.30.0)
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 add_subdirectory(googletest)
 EOF
 
 cd ${project_directory}/src && touch CMakeLists.txt main.cpp solution.cpp solution.h
 cat > CMakeLists.txt << EOF
-cmake_minimum_required(VERSION 3.29.0)
+cmake_minimum_required(VERSION 3.30.0)
 
 set(SOURCES solution.h solution.cpp main.cpp)
 add_executable(app \${SOURCES})
@@ -115,8 +133,6 @@ EOF
 cat > solution.h << EOF
 #ifndef DINO_SOURCE_${1^^}_H
 #define DINO_SOURCE_${1^^}_H
-
-#include <vector>
 
 
 class Solution {
@@ -138,14 +154,14 @@ EOF
 cd ${project_directory}/test && touch CMakeLists.txt
 cd ${project_directory}/test && touch $1_test.cpp
 cat > CMakeLists.txt << EOF
-cmake_minimum_required(VERSION 3.29.0)
+cmake_minimum_required(VERSION 3.30.0)
 
-# Enable C++20 compiler support
-set(CMAKE_CXX_STANDARD 20)
+# Enable C++23 compiler support
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-set(test_solution "$1_test")
+set(TEST_SOLUTION "$1_test")
 
 # BUILD_TESTING variable is created by include(CTest)
 # It is set to ON by default
@@ -155,15 +171,15 @@ if (BUILD_TESTING)
         "../src/solution.cpp"
         "$1_test.cpp")
 
-    add_executable(\${test_solution} \${SOURCES})
+    add_executable(\${TEST_SOLUTION} \${SOURCES})
 
-    target_link_libraries(\${test_solution} PRIVATE GTest::gtest_main)
+    target_link_libraries(\${TEST_SOLUTION} PRIVATE GTest::gtest_main)
 
     include(GoogleTest)
     # Finds all the Google tests associated with the executable
-    gtest_discover_tests(\${test_solution})
+    gtest_discover_tests(\${TEST_SOLUTION})
 
-    target_include_directories(\${test_solution} PUBLIC test src)
+    target_include_directories(\${TEST_SOLUTION} PUBLIC test src)
 endif()
 EOF
 

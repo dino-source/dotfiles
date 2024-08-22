@@ -2,7 +2,12 @@ return {
 	{
 		"williamboman/mason.nvim",
 		config = function()
-			require("mason").setup()
+			require("mason").setup({
+                ensure_installed = {
+                    "clangd",
+                    "clang-format",
+                }
+            })
 		end,
 	},
 	{
@@ -59,6 +64,23 @@ return {
             end
 
 			lspconfig.clangd.setup({
+                name = "clangd",
+                cmd = {
+                    "clangd",
+                    "--background-index",
+                    "--clang-tidy",
+                    "--header-insertion=iwyu",
+                    "--completion-style=detailed",
+                    "--suggest-missing-includes",
+                    "--log=verbose",
+                },
+                init_options = {
+                    usePlaceholders = true,
+                    completeUnimported = true,
+                    clangdFileStatus = true,
+                    semanticHighlighting = true
+                },
+                filetypes = { "c", "cpp", "cc", "cxx", },
                 capabilities = capabilities,
                 on_attach = on_attach,
                 settings = {
@@ -69,7 +91,7 @@ return {
                             ParameterNames = true,
                             DeducedTypes = true,
                         },
-                        fallbackFlags = { "-std=c++23" },
+                        fallbackFlags = { "-std=c++23", "-W", "-Wall", "-Wextra", "-Wpedantic", },
                     },
                 },
             })
@@ -78,7 +100,7 @@ return {
                 on_attach = on_attach,
                 filetypes = {"rust"},
                 settings = {
-                    ["rust-analyzer"] = {
+                    ["rust_analyzer"] = {
                         imports = {
                             granularity = {
                                 group = "module",

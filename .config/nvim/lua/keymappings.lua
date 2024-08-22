@@ -4,6 +4,7 @@ local options = { noremap = true }
 
 vim.keymap.set(mode.insert, "jk", "<Esc>", options) -- use 'jk' as <Esc> key
 
+-- Bunch of local variables just to improve code readability
 local alt_j = "<A-j>"
 local alt_k = "<A-k>"
 local alt_t = "<A-t>"
