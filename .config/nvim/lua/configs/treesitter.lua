@@ -4,6 +4,7 @@ local options = {
         "clojure",
         "cmake",
         "cpp",
+        "gitignore",
         "json",
         "lua",
         "luadoc",
