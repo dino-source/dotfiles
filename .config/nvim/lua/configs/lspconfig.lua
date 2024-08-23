@@ -6,6 +6,7 @@ local lspconfig = require("lspconfig")
 
 -- list of all servers configured.
 lspconfig.servers = {
+    "clangd",
     "lua_ls",
 }
 
@@ -20,6 +21,16 @@ for _, lsp in ipairs(default_servers) do
         capabilities = capabilities,
     })
 end
+
+lspconfig.clangd.setup({
+    on_attach = function(client)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+        on_attach(client)
+    end,
+    on_init = on_init,
+    capabilities = capabilities,
+})
 
 lspconfig.lua_ls.setup({
     on_attach = on_attach,
