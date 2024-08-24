@@ -4,9 +4,11 @@ local options = {
         c_cpp = { "clang-format" }, -- Hack to force download
         c = { "clang_format" },
         cpp = { "clang_format" },
+        python = { "isort", "black" },
     },
 
     formatters = {
+        -- C and C++
         clang_format = {
             prepend_args = {
                 "-style={ \
@@ -22,6 +24,20 @@ local options = {
                 PointerAlignment: Left, \
                 ColumnLimit: 120, \
                 AllowShortFunctionsOnASingleLine: Empty}",
+            },
+        },
+        -- Python
+        black = {
+            prepend_args = {
+                "--fast",
+                "--line-length",
+                "120",
+            },
+        },
+        isort = {
+            prepend_args = {
+                "--profile",
+                "black",
             },
         },
     },
