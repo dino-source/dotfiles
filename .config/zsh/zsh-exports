@@ -20,6 +20,7 @@ export C_COMPILER=${CC}
 export CXX_COMPILER=${CXX}
 export CMAKE_C_COMPILER=${CC}
 export CMAKE_CXX_COMPILER=${CXX}
+export BOOST_ROOT=$HOME/tools/boost
 export DEVELOP=$HOME/dev/cpp/leetcode
 export GOPATH=$HOME/.local/share/go
 
