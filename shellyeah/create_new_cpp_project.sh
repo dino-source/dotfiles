@@ -1,5 +1,7 @@
 #!/bin/sh
 
+DEVELOP="${HOME}/dev/cpp"
+
 project_directory="${DEVELOP}/${1}"
 
 cd ${DEVELOP} && mkdir -p ${1} && cd ${project_directory} && \
