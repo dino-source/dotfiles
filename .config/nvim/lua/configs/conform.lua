@@ -20,7 +20,6 @@ local options = {
                 IndentAccessModifiers: false, \
                 PackConstructorInitializers: Never, \
                 BreakConstructorInitializers: BeforeComma, \
-                BreakTemplateDeclarations: Yes, \
                 DerivePointerAlignment: false, \
                 PointerAlignment: Left, \
                 ColumnLimit: 120, \
