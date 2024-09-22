@@ -25,6 +25,12 @@ for _, lsp in ipairs(default_servers) do
     })
 end
 
+lspconfig.hyprls.setup({
+    on_attach = on_attach,
+    on_init = on_init,
+    capabilities = capabilities,
+})
+
 lspconfig.clangd.setup({
     on_attach = function(client)
         client.server_capabilities.documentFormattingProvider = false

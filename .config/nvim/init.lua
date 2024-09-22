@@ -11,6 +11,25 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+-- Install the hyprlang parser in neovim using nvim-treesitter and use
+-- the following code snippet for automatic filetype detection:
+vim.filetype.add({
+    pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+})
+
+-- Hyprlang LSP
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+    pattern = { "*.hl", "hypr*.conf" },
+    callback = function(event)
+        print(string.format("starting hyprls for %s", vim.inspect(event)))
+        vim.lsp.start({
+            name = "hyprlang",
+            cmd = { "hyprls" },
+            root_dir = vim.fn.getcwd(),
+        })
+    end,
+})
+
 local lazy_config = require("configs.lazy")
 
 -- load plugins

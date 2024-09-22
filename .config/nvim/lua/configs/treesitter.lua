@@ -5,6 +5,7 @@ local options = {
         "cmake",
         "cpp",
         "gitignore",
+        "hyprlang",
         "json",
         "lua",
         "luadoc",
