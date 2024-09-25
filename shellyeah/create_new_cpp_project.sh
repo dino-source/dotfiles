@@ -139,7 +139,7 @@ cat > solution.h << EOF
 
 class Solution {
 public:
-    ${2} ${3};
+    auto ${2};
 };
 
 #endif // DINO_SOURCE_${1^^}_H
@@ -148,7 +148,7 @@ EOF
 cat > solution.cpp << EOF
 #include "solution.h"
 
-${2} Solution::${3} {
+auto Solution::${2} {
     // your code goes here
 }
 EOF
