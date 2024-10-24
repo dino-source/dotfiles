@@ -1,7 +1,7 @@
 # themes from https://github.com/alacritty/alacritty-theme
 
-# import = ["/Users/mischa/.config/alacritty/themes/themes/gruvbox_dark.toml"]
-# import = ["~/.config/alacritty/themes/themes/gruvbox_dark.toml"]
+# general.import = ["/Users/mischa/.config/alacritty/themes/themes/gruvbox_dark.toml"]
+# general.import = ["~/.config/alacritty/themes/themes/gruvbox_dark.toml"]
 
 
 # https://alacritty.org/config-alacritty.html
@@ -11,7 +11,7 @@
 ###########
 
 # Import additional configuration files
-import = [
+general.import = [
   "~/.config/alacritty/catppuccin-macchiato.toml"
 ]
 
@@ -26,10 +26,10 @@ import = [
 working_directory = "None"  # Default: "None"
 
 # Live config reload (changes require restart)
-live_config_reload = true  # Default: true
+general.live_config_reload = true  # Default: true
 
 # Offer IPC using alacritty msg (unix only)
-ipc_socket = true  # Default: true
+general.ipc_socket = true  # Default: true
 
 #######
 # ENV #
