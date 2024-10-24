@@ -108,6 +108,25 @@ if(GIT_FOUND)
 endif()
 EOF
 
+cd ${project_directory} && mkdir -p .vscode && cd ${project_directory}/.vscode && \
+touch launch.json
+
+cat > launch.json << EOF
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug",
+            "program": "\${workspaceFolder}/build/test/${1}_test",
+            "args": [],
+            "cwd": "\${workspaceFolder}"
+        }
+    ]
+}
+EOF
+
 cd ${project_directory}/external && touch CMakeLists.txt
 cat > CMakeLists.txt << EOF
 cmake_minimum_required(VERSION 3.30.0)
@@ -116,11 +135,11 @@ set(CMAKE_CXX_STANDARD 23)
 add_subdirectory(googletest)
 EOF
 
-cd ${project_directory}/src && touch CMakeLists.txt main.cpp solution.cpp solution.h
+cd ${project_directory}/src && touch CMakeLists.txt main.cpp solution.h
 cat > CMakeLists.txt << EOF
 cmake_minimum_required(VERSION 3.30.0)
 
-set(SOURCES solution.h solution.cpp main.cpp)
+set(SOURCES solution.h main.cpp)
 add_executable(app \${SOURCES})
 EOF
 
@@ -128,7 +147,7 @@ cat > main.cpp << EOF
 #include "solution.h"
 
 int main() {
-    // TODO: put some code here
+    [[maybe_unused]] Solution sol;
 }
 EOF
 
@@ -136,21 +155,19 @@ cat > solution.h << EOF
 #ifndef DINO_SOURCE_${1^^}_H
 #define DINO_SOURCE_${1^^}_H
 
+#include <string>
+#include <vector>
 
 class Solution {
 public:
-    auto ${2};
+    auto ${2} {
+        return {};
+    }
+private:
+    std::vector<std::string> svec; // remove it if not needed
 };
 
 #endif // DINO_SOURCE_${1^^}_H
-EOF
-
-cat > solution.cpp << EOF
-#include "solution.h"
-
-auto Solution::${2} {
-    // your code goes here
-}
 EOF
 
 cd ${project_directory}/test && touch CMakeLists.txt
@@ -170,7 +187,6 @@ set(TEST_SOLUTION "$1_test")
 if (BUILD_TESTING)
     set(SOURCES
         "../src/solution.h"
-        "../src/solution.cpp"
         "$1_test.cpp")
 
     add_executable(\${TEST_SOLUTION} \${SOURCES})
@@ -189,11 +205,25 @@ cat > $1_test.cpp << EOF
 #include <gtest/gtest.h>
 #include "../src/solution.h"
 
+[[maybe_unused]] Solution sol;
 
-TEST(TestTopic, $1_test) {
-    // your code goes here
-    int actual_result {1};
-    int expected_result {1};
+TEST(TestTopic, $1_test_1) {
+    auto actual_result {1};
+    auto expected_result {1};
+
+    EXPECT_EQ(actual_result, expected_result);
+}
+
+TEST(TestTopic, $1_test_2) {
+    auto actual_result {1};
+    auto expected_result {1};
+
+    EXPECT_EQ(actual_result, expected_result);
+}
+
+TEST(TestTopic, $1_test_3) {
+    auto actual_result {1};
+    auto expected_result {1};
 
     EXPECT_EQ(actual_result, expected_result);
 }
@@ -205,16 +235,16 @@ cat > xconfig.sh << EOF
 # You have to define DEVELOP variable as a path to your development 
 # directory in your .bashrc (or .zshrc if you use zsh) file
 
-# Environment variables C_COMPILER and CXX_COMPILER have to be 
-# defined in your .bashrc (or .zshrc if you're using zsh) file as well.
+# Environment variables CC and CXX have to be defined in your .bashrc
+# (or .zshrc if you're using zsh) file as well.
 # Usually path to compiler looks like "/usr/bin/gcc" or "/usr/bin/clang".
 # However, it might differ if you've installed it in other directory.
 
 /usr/bin/cmake --no-warn-unused-cli \\
     -DCMAKE_BUILD_TYPE:STRING=Debug \\
     -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE \\
-    -DCMAKE_C_COMPILER:FILEPATH=$C_COMPILER \\
-    -DCMAKE_CXX_COMPILER:FILEPATH=$CXX_COMPILER \\
+    -DCMAKE_C_COMPILER:FILEPATH=\$CC \\
+    -DCMAKE_CXX_COMPILER:FILEPATH=\$CXX \\
     -S$DEVELOP/$1 \\
     -B$DEVELOP/$1/build \\
     -G Ninja
