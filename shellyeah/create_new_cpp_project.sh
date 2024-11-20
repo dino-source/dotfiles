@@ -135,7 +135,7 @@ set(CMAKE_CXX_STANDARD 23)
 add_subdirectory(googletest)
 EOF
 
-cd ${project_directory}/src && touch CMakeLists.txt main.cpp solution.h
+cd ${project_directory}/src && touch CMakeLists.txt main.cpp solution.h btree.h
 cat > CMakeLists.txt << EOF
 cmake_minimum_required(VERSION 3.30.0)
 
@@ -144,17 +144,37 @@ add_executable(app \${SOURCES})
 EOF
 
 cat > main.cpp << EOF
-#include "solution.h"
+int main() {}
+EOF
 
-int main() {
-    [[maybe_unused]] Solution sol;
-}
+cat > btree.h << EOF
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+
+    TreeNode()
+        : val{0}
+        , left{nullptr}
+        , right{nullptr} {}
+
+    explicit TreeNode(int x)
+        : val{x}
+        , left{nullptr}
+        , right{nullptr} {}
+
+    TreeNode(int x, TreeNode* left, TreeNode* right)
+        : val{x}
+        , left{left}
+        , right{right} {}
+};
 EOF
 
 cat > solution.h << EOF
 #ifndef DINO_SOURCE_${1^^}_H
 #define DINO_SOURCE_${1^^}_H
 
+#include "btree.h"
 #include <string>
 #include <vector>
 
@@ -163,8 +183,6 @@ public:
     auto ${2} {
         return {};
     }
-private:
-    std::vector<std::string> svec; // remove it if not needed
 };
 
 #endif // DINO_SOURCE_${1^^}_H
